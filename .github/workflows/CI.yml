@@ -72,17 +72,17 @@ jobs:
             #     username: ${{ github.actor }}
             #     password: ${{ secrets.GITHUB_TOKEN }}
 
-            # - name: 步驟 7 - 打包並推送映像檔 (Build and Push Image)
-            #   uses: docker/build-push-action@v5
-            #   with:
-            #     context: .
-            #     file: ./Dockerfile
-            #     push: true  
-            #     tags: ghcr.io/royhung870323/cdtest/test:latest
+            - name: 步驟 7 - 打包並推送映像檔 (Build and Push Image)
+              uses: docker/build-push-action@v5
+              with:
+                context: .
+                file: ./Dockerfile
+                push: true  
+                # tags: ghcr.io/royhung870323/cdtest/test:latest
 
-                # tags: |
-                #       ghcr.io/royhung870323/cdtest/test:latest
-                #       ghcr.io/royhung870323/cdtest/test:${{ github.run_number }}
+                tags: |
+                      ghcr.io/ckc8c8c8/cdtest/test:latest
+                      ghcr.io/ckc8c8c8/cdtest/test:${{ github.run_number }}
     # CD:
     #     needs: CI # 確保 CI 成功、Image 推上去倉庫了，才執行部署
     #     runs-on: ubuntu-latest
